@@ -1,0 +1,34 @@
+@import "bootstrap/scss/bootstrap";
+
+body {
+    background-color: darkslategray;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    border-radius: 10px;
+}
+
+.registration-container {
+    align-items: center;
+}
+
+.title {
+    color: whitesmoke;
+    text-align: center;
+}
+
+label {
+    color: whitesmoke;
+    margin: 4px;
+}
+
+.registration-container {
+    width: 400px;
+}
+
+.title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
