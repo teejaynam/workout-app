@@ -5,7 +5,7 @@ import { Types } from 'mongoose';
 const router = express.Router();
 
 // create new user 
-router.post('/users', async (req, res) => {
+router.post('/users/register', async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
@@ -16,7 +16,7 @@ router.post('/users', async (req, res) => {
     });
     await newUser.save();
     res.status(201).json(newUser);
-  } catch (error) { //Typescript learning moment :( 
+  } catch (error) { //Typescript learning moment 
     if (error instanceof Error) {
         res.status(500).json({ message: error.message });
     } else {
@@ -58,5 +58,33 @@ router.get('/users/:id', async (req, res) => {
     }
   }
 });
+
+// login
+/*
+router.post('users/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    res.status(200).json({ message: 'Login successful' });
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(500).json({ message: 'An unknown error occurred.' });
+    }
+  }
+});
+*/
+
 
 export default router;
